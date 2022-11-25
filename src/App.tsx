@@ -26,6 +26,39 @@ const slides: Slides[] = [
       logo: karmaGuruLogo,
     },
   },
+  {
+    review:
+      "Personal touch is exceptional. Team is always available and insightful.",
+    highlightedText: "is exceptional",
+    color: "#2DE044",
+    reviewer: {
+      name: "The whole team @ Again",
+      companyName: "The Pancake Collective™ Again",
+      logo: thePancakeCollectiveLogo,
+    },
+  },
+  {
+    review:
+      "Good prices and excellent support. The tech support is solid and manned with knowledgeable people.",
+    highlightedText: "excellent support",
+    color: "#CD2EEB",
+    reviewer: {
+      name: "Mr. Face Again",
+      companyName: "Karma Guru @ Face Co™ Again",
+      logo: karmaGuruLogo,
+    },
+  },
+  {
+    review:
+      "They are fast, friendly, efficient and just give great support. Highly recommend.",
+    highlightedText: "fast, friendly, efficient",
+    color: "#F9952C",
+    reviewer: {
+      name: "The whole team @ Again x2",
+      companyName: "The Pancake Collective™ Again x2",
+      logo: karmaGuruLogo,
+    },
+  },
 ];
 
 function App() {
