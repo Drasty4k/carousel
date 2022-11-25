@@ -73,7 +73,16 @@ const Carousel: React.FC<Props> = ({ slides, swapIntervalTime = 3000 }) => {
             className="carousel__bar"
             role="button"
             onClick={swapSlide(index)}
-          />
+          >
+            <div
+              style={{ animationDuration: `${swapIntervalTime}ms` }}
+              className={
+                index === current
+                  ? "carousel__bar-progress progress-animate"
+                  : "carousel__bar-progress"
+              }
+            />
+          </div>
         ))}
       </div>
     </div>
