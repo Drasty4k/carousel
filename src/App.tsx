@@ -1,5 +1,5 @@
 import "./App.css";
-import { thePancakeCollectiveLogo } from "./assets";
+import { karmaGuruLogo, thePancakeCollectiveLogo } from "./assets";
 import { Carousel } from "./components/carousel";
 import { Slides } from "./components/carousel/carousel";
 
@@ -13,6 +13,17 @@ const slides: Slides[] = [
       name: "The whole team @",
       companyName: "The Pancake Collective™",
       logo: thePancakeCollectiveLogo,
+    },
+  },
+  {
+    review:
+      "This piece of software is the shit, I've never tried anything like it.",
+    highlightedText: "the shit",
+    color: "#88FFED",
+    reviewer: {
+      name: "Mr. Face",
+      companyName: "Karma Guru @ Face Co™",
+      logo: karmaGuruLogo,
     },
   },
 ];

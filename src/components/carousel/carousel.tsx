@@ -1,6 +1,7 @@
 import { quoteIcon } from "./assets";
 import "./carousel.css";
 import ReactDOMServer from "react-dom/server";
+import { useState } from "react";
 
 type Reviewer = {
   name: string;
@@ -20,6 +21,12 @@ type Props = {
 };
 
 const Carousel: React.FC<Props> = ({ slides }) => {
+  const [current, setCurrent] = useState<number>(0);
+
+  const swapSlide = (index: number) => () => {
+    setCurrent(index);
+  };
+
   const getTextWithHighlight = (
     text: string,
     highlightedText: string,
@@ -38,7 +45,14 @@ const Carousel: React.FC<Props> = ({ slides }) => {
   return (
     <div className="carousel__container">
       {slides.map(({ review, highlightedText, color, reviewer }, index) => (
-        <div className="carousel__slide">
+        <div
+          key={index}
+          className={
+            index === current
+              ? "carousel__slide active"
+              : "carousel__slide hidden"
+          }
+        >
           <img src={quoteIcon} alt="Quote Icon" />
           <p
             className="carousel__slide-review tk-neue-haas-grotesk-display"
@@ -53,9 +67,18 @@ const Carousel: React.FC<Props> = ({ slides }) => {
               {reviewer.companyName}
             </p>
           </div>
-          <div className="carousel__bar" />
         </div>
       ))}
+      <div className="carousel__bar-container">
+        {slides.map((_, index) => (
+          <div
+            key={index}
+            className="carousel__bar"
+            role="button"
+            onClick={swapSlide(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
