@@ -31,7 +31,8 @@ const Carousel: React.FC<Props> = ({ slides, swapIntervalTime = 3000 }) => {
   useEffect(() => {
     const { length } = slides;
     const autoSwaps = setInterval(() => {
-      setCurrent(current === length - 1 ? 0 : current + 1);
+      const lastElement = current === length - 1;
+      setCurrent((prev) => (lastElement ? 0 : prev + 1));
     }, swapIntervalTime);
 
     return () => {
@@ -57,12 +58,12 @@ const Carousel: React.FC<Props> = ({ slides, swapIntervalTime = 3000 }) => {
               __html: getTextWithHighlight(review, highlightedText, color),
             }}
           />
-          <div className="carousel__slide-reviewer tk-neue-haas-grotesk-text">
+          <div className="carousel__slide-reviewer">
             <img src={reviewer.logo} alt={`${reviewer.companyName}'s Logo`} />
-            <p className="carousel__slide-reviewer-name">{reviewer.name}</p>
-            <p className="carousel__slide-reviewer-company-name">
-              {reviewer.companyName}
-            </p>
+            <div className="carousel__slide-reviewer-text tk-neue-haas-grotesk-text">
+              <p>{reviewer.name}</p>
+              <p>{reviewer.companyName}</p>
+            </div>
           </div>
         </div>
       ))}
