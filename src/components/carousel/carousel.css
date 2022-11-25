@@ -7,11 +7,11 @@
   height: 50%;
 }
 
-.carousel__container .hidden {
+.carousel__container .carousel__slide.hidden {
   display: none;
 }
 
-.carousel__container .active {
+.carousel__container .carousel__slide.active {
   display: block;
 }
 
@@ -50,6 +50,12 @@
 .carousel__container .carousel__bar-container .carousel__bar {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.534);
+  transition: all 0.2s;
+}
+
+.carousel__container .carousel__bar-container .carousel__bar:hover {
+  cursor: pointer;
+  transform: scaleY(1.8);
 }
 
 .carousel__container
