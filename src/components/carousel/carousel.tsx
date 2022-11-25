@@ -1,6 +1,6 @@
 import "./carousel.css";
 import ReactDOMServer from "react-dom/server";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { QuoteIcon } from "../UI/icons";
 
 type Reviewer = {
@@ -18,29 +18,26 @@ export type Slides = {
 
 type Props = {
   slides: Slides[];
+  swapIntervalTime?: number;
 };
 
-const Carousel: React.FC<Props> = ({ slides }) => {
+const Carousel: React.FC<Props> = ({ slides, swapIntervalTime = 3000 }) => {
   const [current, setCurrent] = useState<number>(0);
 
   const swapSlide = (index: number) => () => {
     setCurrent(index);
   };
 
-  const getTextWithHighlight = (
-    text: string,
-    highlightedText: string,
-    color: string
-  ) => {
-    const textWithHighlight = text.replace(
-      highlightedText,
-      ReactDOMServer.renderToString(
-        <span style={{ color }}>{highlightedText}</span>
-      )
-    );
+  useEffect(() => {
+    const { length } = slides;
+    const autoSwaps = setInterval(() => {
+      setCurrent(current === length - 1 ? 0 : current + 1);
+    }, swapIntervalTime);
 
-    return textWithHighlight;
-  };
+    return () => {
+      clearInterval(autoSwaps);
+    };
+  }, [current, slides, swapIntervalTime]);
 
   return (
     <div className="carousel__container">
@@ -81,6 +78,21 @@ const Carousel: React.FC<Props> = ({ slides }) => {
       </div>
     </div>
   );
+};
+
+const getTextWithHighlight = (
+  text: string,
+  highlightedText: string,
+  color: string
+) => {
+  const textWithHighlight = text.replace(
+    highlightedText,
+    ReactDOMServer.renderToString(
+      <span style={{ color }}>{highlightedText}</span>
+    )
+  );
+
+  return textWithHighlight;
 };
 
 export default Carousel;
