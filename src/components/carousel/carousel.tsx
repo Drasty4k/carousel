@@ -1,7 +1,7 @@
-import { quoteIcon } from "./assets";
 import "./carousel.css";
 import ReactDOMServer from "react-dom/server";
 import { useState } from "react";
+import { QuoteIcon } from "../UI/icons";
 
 type Reviewer = {
   name: string;
@@ -53,7 +53,7 @@ const Carousel: React.FC<Props> = ({ slides }) => {
               : "carousel__slide hidden"
           }
         >
-          <img src={quoteIcon} alt="Quote Icon" />
+          <QuoteIcon strokeColor={color} />
           <p
             className="carousel__slide-review tk-neue-haas-grotesk-display"
             dangerouslySetInnerHTML={{
