@@ -4,7 +4,18 @@
   color: #fff;
   padding: 54px 150px;
   width: 100%;
-  height: 50%;
+}
+
+@media (max-width: 1000px) {
+  .carousel__container {
+    padding: 54px 50px;
+  }
+}
+
+@media (max-width: 550px) {
+  .carousel__container {
+    padding: 54px 20px;
+  }
 }
 
 .carousel__container .carousel__slide.hidden {
@@ -21,6 +32,12 @@
   padding: 40px 0 60px 0;
   max-width: 80%;
   margin: auto;
+}
+
+@media (max-width: 1000px) {
+  .carousel__container .carousel__slide .carousel__slide-review {
+    font-size: 35px;
+  }
 }
 
 .carousel__container
